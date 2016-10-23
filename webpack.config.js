@@ -1,4 +1,6 @@
 module.exports = {
+  debug: true,
+  devtool: 'cheap-module-source-map',
   entry: './src/index.tsx',
   output: {
     filename: './dist/bundle.js'
@@ -8,10 +10,12 @@ module.exports = {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
   module: {
+    preLoaders: [
+      { test: /\.css$/, exclude: /node_modules/, loader: 'typed-css-modules'}
+    ],
     loaders: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       { test: /\.tsx?$/, loaders: ['ts'] },
-      { test: /\.css$/, loaders: ["style","css?modules&importLoaders=1&localIdentName=[name]__[hash:base64:5],typed-css-modules",'postcss']},
+      { test: /\.css$/, loaders: ["style","css?modules&importLoaders=1&localIdentName=[name]__[hash:base64:5]",'postcss']},
     ]
   },
   postcss: function () {
