@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as styles from "./index.css";
+import * as styles from "./Hello.css";
 export interface HelloProps { compiler: string; framework: string; }
 
 export class Hello extends React.Component<HelloProps, {}> {
