@@ -15,7 +15,7 @@ module.exports = {
     ],
     loaders: [
       { test: /\.tsx?$/, loaders: ['ts'] },
-      { test: /\.css$/, loaders: ["style","css?modules&importLoaders=1&localIdentName=[name]__[hash:base64:5]",'postcss']},
+      { test: /\.css$/, loaders: ["style","css?modules&importLoaders=1&localIdentName=[name][hash:base64:5][local]",'postcss']},
     ]
   },
   postcss: function () {
