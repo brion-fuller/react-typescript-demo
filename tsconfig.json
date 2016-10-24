@@ -5,7 +5,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "strictNullChecks": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,//currently false but should be true in the future ideally
         "module": "commonjs",
         "removeComments": true,
         "sourceMap": true,
