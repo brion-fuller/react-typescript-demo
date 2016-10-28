@@ -1,18 +1,16 @@
-const initialState = {
+import { IUpdateAction, IUpdateState } from '../types/IUpdateState';
+
+const initialState: IUpdateState = {
   number: 1
 }
 
-interface IAction {
-    type: string;
-    amount: number;
-}
-
-export function update(state = initialState, action: IAction) {
+export function update(state: IUpdateState = initialState, action: IUpdateAction): IUpdateState {
+  var newState = JSON.parse(JSON.stringify(state));
   if(action.type === 'INCREASE') {
-    return { number: state.number + action.amount }
+    state.number = state.number + action.amount;
   }
   else if(action.type === 'DECREASE') {
-    return { number: state.number - action.amount }
+    state.number = state.number - action.amount;
   }
-  return state
+  return newState;
 }

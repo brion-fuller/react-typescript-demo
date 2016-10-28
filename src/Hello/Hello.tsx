@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-
+import { ICombinedState } from '../types/IState';
 import * as styles from "./Hello.css";
 
 interface IHelloAction {
@@ -16,8 +16,6 @@ interface IHelloDispatchProps {
     increase(n: number):IHelloAction;
     decrease(n: number):IHelloAction;
 }
-
-type IHelloProps = IHelloStateProps & IHelloDispatchProps;
 
 //Actions refactor out
 export function increase(n: number): IHelloAction {
@@ -44,7 +42,7 @@ function mapDispatchToProps(dispatch) {
 
 
 //@connect<IHelloStateProps, IHelloDispatchProps, any>(mapStateToProps, mapDispatchToProps)
-class Hello extends React.Component<IHelloProps, {}> {
+class Hello extends React.Component<IHelloStateProps&IHelloDispatchProps, {}> {
     render() {
         return( 
             <div>
@@ -58,6 +56,6 @@ class Hello extends React.Component<IHelloProps, {}> {
 }
 
 export default connect(
-  (state) => ({ number: state.update.number }),
+  function(state: ICombinedState){return { number: state.update.number }},
   { increase, decrease }
 )(Hello);
