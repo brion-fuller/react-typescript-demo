@@ -5,7 +5,9 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "strictNullChecks": true,
-        "noImplicitAny": false,//currently false but should be true in the future ideally
+        "noImplicitAny": true,//currently false but should be true in the future ideally
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
         "module": "commonjs",
         "removeComments": true,
         "sourceMap": true,

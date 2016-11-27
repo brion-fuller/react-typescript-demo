@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
+//import { bindActionCreators } from "redux";
 import { ICombinedState } from '../types/IState';
 import * as styles from "./Hello.css";
 
@@ -22,26 +22,24 @@ export function increase(n: number): IHelloAction {
     return {
         type: 'INCREASE',
         amount: n
-    }
+    };
 }
 
 export function decrease(n: number): IHelloAction {
     return {
         type: 'DECREASE',
         amount: n
-    }
+    };
 }
 
-function mapStateToProps(state) {
-  return state.number;
+export function mapStateToProps(state: IHelloStateProps) : IHelloStateProps{
+    return { number: state.number };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({increase: increase,decrease: decrease}, dispatch)
+export function mapDispatchToProps() : IHelloDispatchProps{
+    return { increase, decrease };
 }
 
-
-//@connect<IHelloStateProps, IHelloDispatchProps, any>(mapStateToProps, mapDispatchToProps)
 class Hello extends React.Component<IHelloStateProps&IHelloDispatchProps, {}> {
     render() {
         return( 
